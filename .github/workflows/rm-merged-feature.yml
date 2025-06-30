@@ -1,0 +1,14 @@
+name: Clean Merged Feature Branches
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  cleanup-feature-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo head_ref=${{ github.head_ref }} ref=${{ github.ref }}
