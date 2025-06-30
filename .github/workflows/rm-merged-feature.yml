@@ -3,9 +3,12 @@ name: Clean Merged Feature Branches
 on:
   pull_request:
     branches: [ "develop" ]
+    types: [ "closed" ]
+
 
 jobs:
   cleanup-feature-branch:
+    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'feature/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
